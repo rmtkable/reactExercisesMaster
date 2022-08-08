@@ -11,7 +11,7 @@
 
 // Instructions: The current code uses JSX to assign a div element to the constant JSX. Replace the div with an h1 element and add the text Hello JSX! inside it.
 
-const JSX = <div></div>;
+const JSX = <h1>Hello JSX!</h1>;
 
 // 2 React: Create a Complex JSX Element
 // The last challenge was a simple example of JSX, but JSX can represent more complex HTML as well.
@@ -42,6 +42,19 @@ const JSX = <div></div>;
 
 // Note: When rendering multiple elements like this, you can wrap them all in parentheses, but it's not strictly required. Also notice this challenge uses a div tag to wrap all the child elements within a single parent element. If you remove the div, the JSX will no longer transpile. Keep this in mind, since it will also apply when you return JSX elements in React components.
 
+const JSX = (
+  <div>
+    <h1>Happy</h1>
+    <p>Thursday</p>
+    <ul>
+      <li>Have a</li>
+      <li>Great</li>
+      <li>Day</li>
+    </ul>
+  </div>
+)
+
+
 // 3.React: Add Comments in JSX
 // JSX is a syntax that gets compiled into valid JavaScript. Sometimes, for readability, you might need to add comments to your code. Like most programming languages, JSX has its own way to do this.
 
@@ -50,7 +63,7 @@ const JSX = <div></div>;
 // The code editor has a JSX element similar to what you created in the last challenge. Add a comment somewhere within the provided div element, without modifying the existing h1 or p elements.
 const JSX = (
     <div>
-      <h1>This is a block of JSX</h1>
+      {/* <h1>This is a block of JSX</h1> */}
       <p>Here's a subtitle</p>
     </div>
   );
@@ -75,7 +88,7 @@ const JSX = (
     </div>
   );
   // Change code below this line
-
+ReactDOM.render(<JSX />, document.getElementById('challenge-node'));
 
   // 5 Define an HTML Class in JSX
 // Now that you're getting comfortable writing JSX, you may be wondering how it differs from HTML.
@@ -88,7 +101,7 @@ const JSX = (
 
 // Apply a class of myDiv to the div provided in the JSX code.
 const JSX = (
-  <div>
+  <div className="myDiv">
     <h1>Add a class to this div</h1>
   </div>
 );
@@ -108,13 +121,13 @@ const JSX = (
 // Fix the errors in the code editor so that it is valid JSX and successfully transpiles. Make sure you don't change any of the content - you only need to close tags where they are needed.
 
 
-// const JSX = (
-//   <div>
-//     <h2>Welcome to React!</h2> <br >
-//     <p>Be sure to close all tags!</p>
-//     <hr >
-//   </div>
-// );
+const JSX = (
+  <div>
+    <h2>Welcome to React!</h2> <br />
+    <p>Be sure to close all tags!</p>
+    <hr />
+  </div>
+);
 
  {/* 7 Create a Stateless Functional Component
 Components are the core of React. Everything in React is a component and here you will learn how to create one.
@@ -137,23 +150,25 @@ The code editor has a function called MyComponent. Complete this function so it 
 Note: The text is considered a child of the div element, so you will not be able to use a self-closing tag. */}
 
 const MyComponent = function() {
- 
+  return (
+    <div>Almost the Weekend</div>
+  )
 }
 
 //8 Create a React Component
 // The other way to define a React component is with the ES6 class syntax. In the following example, Kitten extends React.Component:
 
-// class Kitten extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
+class Kitten extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-//   render() {
-//     return (
-//       <h1>Hi</h1>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <h1>Hi</h1>
+    );
+  }
+}
 // This creates an ES6 class Kitten which extends the React.Component class. So the Kitten class now has access to many useful React features, such as local state and lifecycle hooks. Don't worry if you aren't familiar with these terms yet, they will be covered in greater detail in later challenges. Also notice the Kitten class has a constructor defined within it that calls super(). It uses super() to call the constructor of the parent class, in this case React.Component. The constructor is a special method used during the initialization of objects that are created with the class keyword. It is best practice to call a component's constructor with super, and pass props to both. This makes sure the component is initialized properly. For now, know that it is standard for this code to be included. Soon you will see other uses for the constructor as well as props.
 
 // MyComponent is defined in the code editor using class syntax. Finish writing the render method so it returns a div element that contains an h1 with the text Hello React!.
@@ -164,7 +179,11 @@ class MyComponent extends React.Component {
   }
   render() {
     // Change code below this line
-
+    return (
+      <div>
+        <h1>Link</h1>
+      </div>
+    )
 
 
     // Change code above this line
@@ -176,13 +195,13 @@ class MyComponent extends React.Component {
 
 // To compose these components together, you could create an App parent component which renders each of these three components as children. To render a component as a child in a React component, you include the component name written as a custom HTML tag in the JSX. For example, in the render method you could write:
 
-// return (
-//  <App>
-//   <Navbar />
-//   <Dashboard />
-//   <Footer />
-//  </App>
-// )
+return (
+ <App>
+  <Navbar />
+  <Dashboard />
+  <Footer />
+ </App>
+)
 // When React encounters a custom HTML tag that references another component (a component name wrapped in < /> like in this example), it renders the markup for that component in the location of the tag. This should illustrate the parent/child relationship between the App component and the Navbar, Dashboard, and Footer.
 
 // In the code editor, there is a simple functional component called ChildComponent and a class component called ParentComponent. Compose the two together by rendering the ChildComponent within the ParentComponent. Make sure to close the ChildComponent tag with a forward slash.
@@ -206,7 +225,7 @@ class ParentComponent extends React.Component {
       <div>
         <h1>I am the parent</h1>
         { /* Change code below this line */ }
-      
+        <ChildComponent />
 
         { /* Change code above this line */ }
       </div>
@@ -239,7 +258,7 @@ const Fruits = () => {
   return (
     <div>
       { /* Change code below this line */ }
-
+      <TypesOfFruit />
       { /* Change code above this line */ }
     </div>
   );
@@ -255,7 +274,7 @@ class TypesOfFood extends React.Component {
       <div>
         <h1>Types of Food:</h1>
         { /* Change code below this line */ }
-
+        <Fruits />
         { /* Change code above this line */ }
       </div>
     );
@@ -277,7 +296,8 @@ class Fruits extends React.Component {
       <div>
         <h2>Fruits:</h2>
         { /* Change code below this line */ }
-
+        <NonCitrus />
+        <Citrus />
         { /* Change code above this line */ }
       </div>
     );
@@ -293,7 +313,7 @@ class TypesOfFood extends React.Component {
       <div>
         <h1>Types of Food:</h1>
         { /* Change code below this line */ }
-
+        <Fruits />
         { /* Change code above this line */ }
         <Vegetables />
       </div>
@@ -318,7 +338,8 @@ class TypesOfFood extends React.Component {
       <div>
         <h1>Types of Food:</h1>
         {/* Change code below this line */}
-
+        <Fruits />
+        <Vegetables />
         {/* Change code above this line */}
       </div>
     );
@@ -326,7 +347,7 @@ class TypesOfFood extends React.Component {
 };
 
 // Change code below this line
-
+ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
 
 // 13 Write a React Component from Scratch
 // Now that you've learned the basics of JSX and React components, it's time to write a component on your own. React components are the core building blocks of React applications so it's important to become very familiar with writing them. Remember, a typical React component is an ES6 class which extends React.Component. It has a render method that returns HTML (from JSX) or null. This is the basic form of a React component. Once you understand this well, you will be prepared to start building more complex React projects.
@@ -335,7 +356,19 @@ class TypesOfFood extends React.Component {
 
 // Render this component to the DOM using ReactDOM.render(). There is a div with id='challenge-node' available for you to use.
 
-
+class MyComponent extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div id="challenge-node">
+        <h1>My First React Component</h1>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
 
 // 14 Pass Props to a Stateless Functional Component
 // The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. With this foundation, it's time to look at another feature very common in React: props. In React, you can pass props, or properties, to child components. Say you have an App component which renders a child component called Welcome which is a stateless functional component. You can pass Welcome a user property by writing:
@@ -353,7 +386,7 @@ const CurrentDate = (props) => {
   return (
     <div>
       { /* Change code below this line */ }
-      <p>The current date is: </p>
+      <p>The current date is: {props.date}</p>
       { /* Change code above this line */ }
     </div>
   );
@@ -368,7 +401,7 @@ class Calendar extends React.Component {
       <div>
         <h3>What date is it?</h3>
         { /* Change code below this line */ }
-        <CurrentDate />
+        <CurrentDate date={Date()} />
         { /* Change code above this line */ }
       </div>
     );
@@ -387,7 +420,7 @@ class Calendar extends React.Component {
 
 const List = (props) => {
   { /* Change code below this line */ }
-  return <p>{}</p>
+  return <p>{props.tasks.join(", ")}</p>
   { /* Change code above this line */ }
 };
 
@@ -401,9 +434,9 @@ class ToDo extends React.Component {
         <h1>To Do Lists</h1>
         <h2>Today</h2>
         { /* Change code below this line */ }
-        <List/>
+        <List tasks={['walk', 'cook']}/>
         <h2>Tomorrow</h2>
-        <List/>
+        <List tasks={['walk', 'cook', 'clean']}/>
         { /* Change code above this line */ }
       </div>
     );
@@ -423,6 +456,9 @@ const ShoppingCart = (props) => {
   )
 };
 // Change code below this line
+ShoppingCart.defaultProps = {
+  items: 0
+}
 
 // 17 Override Default Props
 // The ability to set default props is a useful feature in React. The way to override the default props is to explicitly set the prop values for a component.
@@ -444,7 +480,7 @@ class ShoppingCart extends React.Component {
   }
   render() {
     { /* Change code below this line */ }
-    return <Items />
+    return <Items quantity={10}/>
     { /* Change code above this line */ }
   }
 };
@@ -466,7 +502,7 @@ const Items = (props) => {
 };
 
 // Change code below this line
-
+Item.propTypes = {quantity: PropTypes.number.isRequired};
 // Change code above this line
 
 Items.defaultProps = {
@@ -497,7 +533,7 @@ class ReturnTempPassword extends React.Component {
     return (
         <div>
             { /* Change code below this line */ }
-            <p>Your temporary password is: <strong></strong></p>
+            <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
             { /* Change code above this line */ }
         </div>
     );
@@ -516,7 +552,7 @@ class ResetPassword extends React.Component {
           <h3>We've generated a new temporary password for you.</h3>
           <h3>Please reset this password from your account settings ASAP.</h3>
           { /* Change code below this line */ }
-
+          <ReturnTempPassword tempPassword='xxxxxxxx' />
           { /* Change code above this line */ }
         </div>
     );
@@ -538,13 +574,17 @@ class CampSite extends React.Component {
   render() {
     return (
       <div>
-        <Camper/>
+        <Camper />
       </div>
     );
   }
 };
 // Change code below this line
-
+const Camper = (props) => <p>{props.name}</p>;
+Camper.defaultProps = {
+  name: "CamperBot"
+}
+Camper.propTypes = { name: PropTypes.string.isRequired};
 
 
 
@@ -563,7 +603,9 @@ class StatefulComponent extends React.Component {
     constructor(props) {
       super(props);
       // Only change code below this line
-  
+      this.state = {
+        name: "Lt. Uhura"
+      }
       // Only change code above this line
     }
     render() {
@@ -592,14 +634,16 @@ class StatefulComponent extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        name: 'freeCodeCamp'
+        name: 'freeCodeCamp',
+        age: 32
       }
     }
     render() {
       return (
         <div>
           { /* Change code below this line */ }
-  
+          <h1>{this.state.name}</h1>
+          <h1>{this.state.age}</h1>
           { /* Change code above this line */ }
         </div>
       );
@@ -622,12 +666,12 @@ class StatefulComponent extends React.Component {
     }
     render() {
       // Change code below this line
-      
+      const name = this.state.name;
       // Change code above this line
       return (
         <div>
           { /* Change code below this line */ }
-          
+          <h1>{name}</h1>
           { /* Change code above this line */ }
         </div>
       );
@@ -655,7 +699,9 @@ class StatefulComponent extends React.Component {
     }
     handleClick() {
       // Change code below this line
-  
+      this.setState({
+        name: "React Rocks!"
+      })
       // Change code above this line
     }
     render() {
@@ -690,7 +736,7 @@ class StatefulComponent extends React.Component {
         text: "Hello"
       };
       // Change code below this line
-  
+      this.handleClick = this.handleClick.bind(this);
       // Change code above this line
     }
     handleClick() {
@@ -702,7 +748,7 @@ class StatefulComponent extends React.Component {
       return (
         <div>
           { /* Change code below this line */ }
-          
+          <button onClick={this.handleClick}>Click Me</button>
           { /* Change code above this line */ }
           <h1>{this.state.text}</h1>
         </div>
@@ -744,11 +790,19 @@ class StatefulComponent extends React.Component {
         visibility: false
       };
       // Change code below this line
-  
+      this.toggleVisibility = this.toggleVisibility.bind(this);
       // Change code above this line
     }
     // Change code below this line
-  
+    toggleVisibility() {
+      this.setState(state => {
+        if(state.visibility === true){
+          return { visibility: false };
+        } else {
+          return { visibility: true };
+        }
+      })
+    }
     // Change code above this line
     render() {
       if (this.state.visibility) {
@@ -781,11 +835,29 @@ class StatefulComponent extends React.Component {
         count: 0
       };
       // Change code below this line
-  
+      this.increment = this.increment.bind(this);
+      this.decrement = this.decrement.bind(this);
+      this.reset = this.reset.bind(this);
       // Change code above this line
     }
     // Change code below this line
-  
+    reset(){
+      this.setState({
+        count: 0
+      });
+    }
+
+    increment(){
+      this.setState(state =>({
+        count: state.count + 1
+      }));
+    }
+
+    decrement(){
+      this.setState(state => ({
+        count: state.count - 1
+      }));
+    }
     // Change code above this line
     render() {
       return (
@@ -818,17 +890,19 @@ class StatefulComponent extends React.Component {
         input: ''
       };
       // Change code below this line
-      
+      this.handleChange = this.handleChange.bind(this);
       // Change code above this line
     }
     // Change code below this line
-  
+    handleChange(event){
+      this.setState({ input: event.target.value })
+    }
     // Change code above this line
     render() {
       return (
         <div>
           { /* Change code below this line */}
-          
+          <input type="text" value={this.state.input} onChange={this.handleChange} />
           { /* Change code above this line */}
           <h4>Controlled Input:</h4>
           <p>{this.state.input}</p>
@@ -864,7 +938,10 @@ class StatefulComponent extends React.Component {
     }
     handleSubmit(event) {
       // Change code below this line
-  
+      event.preventDefault();
+      this.setState({
+        submit: this.state.input
+      })
       // Change code above this line
     }
     render() {
@@ -872,12 +949,12 @@ class StatefulComponent extends React.Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             {/* Change code below this line */}
-            
+            <input type="text" value={this.state.input} onChange={this.handleChange} />
             {/* Change code above this line */}
             <button type='submit'>Submit!</button>
           </form>
           {/* Change code below this line */}
-          
+          <h1>{this.state.submit}</h1>
           {/* Change code above this line */}
         </div>
       );
@@ -903,7 +980,7 @@ class StatefulComponent extends React.Component {
       return (
          <div>
            {/* Change code below this line */}
-  
+            <Navbar name={this.state.name} />
            {/* Change code above this line */}
          </div>
       );
@@ -918,7 +995,7 @@ class StatefulComponent extends React.Component {
       return (
       <div>
         {/* Change code below this line */}
-  
+        <h1>Hello, my name is: {this.props.name}</h1>
         {/* Change code above this line */}
       </div>
       );
@@ -950,7 +1027,8 @@ class StatefulComponent extends React.Component {
       return (
          <div>
           { /* Change code below this line */ }
-  
+          <GetInput input={this.state.inputValue} handleChange={this.handleChange} />
+          <RenderInput input={this.state.inputValue} />
           { /* Change code above this line */ }
          </div>
       );
@@ -1000,7 +1078,7 @@ class StatefulComponent extends React.Component {
     }
     componentWillMount() {
       // Change code below this line
-  
+      console.log('Component being mounted');
       // Change code above this line
     }
     render() {
@@ -1032,7 +1110,7 @@ class StatefulComponent extends React.Component {
       return (
         <div>
           {/* Change code below this line */}
-  
+          <h1>Active Users: {this.state.activeUsers}</h1>
           {/* Change code above this line */}
         </div>
       );
@@ -1058,7 +1136,13 @@ class StatefulComponent extends React.Component {
       this.handleKeyPress = this.handleKeyPress.bind(this);
     }
     // Change code below this line
-  
+    componentDidMount(){
+      document.addEventListener('keydown', this.handleKeyPress);
+    }
+
+    componentWillUnmount(){
+      document.removeEventListener('keydown', this.handleKeyPress);
+    }
     // Change code above this line
     handleEnter() {
       this.setState((state) => ({
@@ -1092,7 +1176,10 @@ class StatefulComponent extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
       console.log('Should I update?');
       // Change code below this line
-  
+      if(nextProps.value % 2 === 0){
+        return true;
+      }
+      return false;
       // Change code above this line
     }
     componentDidUpdate() {
